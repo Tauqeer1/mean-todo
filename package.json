@@ -12,7 +12,7 @@
     "server:dev": "nodemon app",
     "client:dev": "ng serve",
     "development": "ng build --watch & npm run server:dev",
-    "postinstall": "ng build --prod --output-path dist"
+    "postinstall": "ng build --output-path dist"
   },
   "private": true,
   "dependencies": {
