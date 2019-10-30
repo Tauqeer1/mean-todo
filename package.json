@@ -3,14 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node app.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "db:seed": "node ./server/seedDb/seed.js",
     "server:dev": "nodemon app",
     "client:dev": "ng serve",
-    "development": "ng build --watch & npm run server:dev"
+    "development": "ng build --watch & npm run server:dev",
+    "postinstall": "ng build --prod --output-path dist"
   },
   "private": true,
   "dependencies": {
@@ -39,6 +41,7 @@
     "mongoose": "^5.7.7",
     "morgan": "^1.9.1",
     "ngx-toastr": "^11.1.2",
+    "pm2": "^4.1.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
