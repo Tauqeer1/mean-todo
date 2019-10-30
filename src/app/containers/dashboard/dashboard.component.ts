@@ -62,4 +62,57 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+
+  // tslint:disable-next-line: variable-name
+  deleteTodo(_id: string) {
+    this.todoService.deleteTodo(_id).subscribe(
+      id => {
+        this.toastrService.success('Todo deleted successfully', 'Deleted');
+        this.todos = this.todos.filter(todo => todo._id !== id);
+      },
+      errorObj => {
+        if (
+          errorObj &&
+          errorObj.error &&
+          errorObj.error.error &&
+          errorObj.error.error.msg
+        ) {
+          this.toastrService.error(errorObj.error.error.msg, 'Error!');
+        } else {
+          this.toastrService.error('Something went wrong!');
+        }
+      }
+    );
+  }
+
+  updateTodo(todo: TodoItem) {
+    this.todoService.updateTodo(todo).subscribe(
+      todoObj => {
+        if (todoObj.done) {
+          this.toastrService.success('Todo mark as completed', 'Completed');
+        } else {
+          this.toastrService.success(
+            'Todo unmark as completed',
+            'In Completed'
+          );
+        }
+        const todoObject = this.todos.find(obj => obj._id === todoObj._id);
+        if (todoObject) {
+          todoObject.done = todoObj.done;
+        }
+      },
+      errorObj => {
+        if (
+          errorObj &&
+          errorObj.error &&
+          errorObj.error.error &&
+          errorObj.error.error.msg
+        ) {
+          this.toastrService.error(errorObj.error.error.msg, 'Error!');
+        } else {
+          this.toastrService.error('Something went wrong!');
+        }
+      }
+    );
+  }
 }

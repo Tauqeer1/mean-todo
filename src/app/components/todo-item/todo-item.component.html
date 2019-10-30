@@ -1,0 +1,11 @@
+<li class="list-group-item" [ngClass]="{'completed': todo.done}">
+  <div style="height: 35px;" class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" (change)="completed(todo, $event)" [checked]="todo.done">
+    <label class="form-check-label">
+      {{todo.text}}
+    </label>
+  </div>
+  <button class="float-right btn btn-danger" (click)="deletedTodo.emit(todo._id)">
+    <fa-icon class="float-right" [icon]="faTrash"></fa-icon>
+  </button>
+</li>

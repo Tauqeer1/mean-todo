@@ -36,4 +36,29 @@ export class TodoService {
         })
       );
   }
+
+  // tslint:disable-next-line: variable-name
+  deleteTodo(_id: string) {
+    return this.httpClient
+      .delete<ResponseObj>(`${this.BASE_URL}/api/todo/${_id}`)
+      .pipe(
+        map(res => {
+          if (res.success) {
+            return _id;
+          }
+        })
+      );
+  }
+
+  updateTodo(todo: TodoItem) {
+    return this.httpClient
+      .put<ResponseObj>(`${this.BASE_URL}/api/todo/${todo._id}`, todo)
+      .pipe(
+        map(res => {
+          if (res.success) {
+            return res.data;
+          }
+        })
+      );
+  }
 }
