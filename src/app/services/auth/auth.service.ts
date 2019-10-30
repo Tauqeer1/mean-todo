@@ -38,4 +38,18 @@ export class AuthService {
         })
       );
   }
+
+  login(user: User) {
+    return this.httpClient
+      .post<ResponseObj>(`${this.BASE_URL}/api/login`, user)
+      .pipe(
+        map(res => {
+          if (res.success) {
+            localStorage.setItem('user', JSON.stringify(res.data));
+            this.userSubject.next(res.data);
+            return res.data;
+          }
+        })
+      );
+  }
 }

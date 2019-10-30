@@ -20,9 +20,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {}
 
+  // Register method
   register(user: User) {
     this.authService.register(user).subscribe(
       (userData: User) => {
+        // On successful register navigate to dashboard
         this.router.navigate(['/dashboard']);
       },
       errorObj => {
