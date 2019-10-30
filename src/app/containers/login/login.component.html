@@ -1,1 +1,9 @@
-<p>login works!</p>
+<!-- Content projection of auth form -->
+<app-auth-form>
+  <h1 class="row justify-content-center align-items-center h-100">
+    Login
+  </h1>
+  <button class="btn btn-info btn-lg btn-block">Sign In</button>
+  <a [routerLink]="['/register']" class="row justify-content-center align-items-center">Don't have an
+    account! Register here</a>
+</app-auth-form>
