@@ -3,7 +3,7 @@ import path from 'path';
 import middlewareConfig from './configs/middleware';
 import dbConnect from './configs/db';
 // import userRoutes for api routes
-import { userRoutes } from './modules';
+import { userRoutes, todoRoutes } from './modules';
 
 // Running server port
 const PORT = process.env.PORT || 8080;
@@ -22,7 +22,7 @@ let distDir = path.resolve(__dirname, '../dist/mean-todo');
 app.use(express.static(distDir));
 
 // Api routes for all api
-app.use('/api', [userRoutes]);
+app.use('/api', [userRoutes, todoRoutes]);
 
 // render index.html page from angular
 app.get('/*', (req, res) => {

@@ -15,6 +15,7 @@ export default (req, res, next) => {
     token = token.slice(7, token.length);
   }
   if (token) {
+    // Verify token
     jwt.verify(token, credentials.secret, async (err, payload) => {
       if (err) {
         return serverErrorHandler(res, err);

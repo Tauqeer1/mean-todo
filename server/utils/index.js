@@ -11,7 +11,10 @@ import {
   serverErrorHandler
 } from './responseHandler';
 
-import { signupAndLoginFieldsValidation } from './validation';
+import {
+  signupAndLoginFieldsValidation,
+  todoFieldsValidation
+} from './validation';
 
 export {
   createToken,
@@ -23,5 +26,6 @@ export {
   errorHandler404,
   serverErrorHandler,
   signupAndLoginFieldsValidation,
+  todoFieldsValidation,
   requireJwtAuth
 };

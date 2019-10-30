@@ -1,5 +1,6 @@
 import { check } from 'express-validator';
 
+// Signup and login fields validation
 export const signupAndLoginFieldsValidation = () => {
   return [
     check('email')
@@ -16,5 +17,16 @@ export const signupAndLoginFieldsValidation = () => {
       .withMessage('Password required')
       .isLength({ min: 8 })
       .withMessage('Password must atleast 8 character long')
+  ];
+};
+
+// todo fields validation
+export const todoFieldsValidation = () => {
+  return [
+    check('text')
+      .trim()
+      .not()
+      .isEmpty()
+      .withMessage('Text required')
   ];
 };
