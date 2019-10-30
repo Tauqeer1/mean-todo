@@ -4,19 +4,21 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './../../helper/auth-guard/auth-guard.guard';
 
+import { TodoInputModule } from '../../components/todo-input/todo-input.module';
+
 import { DashboardComponent } from './dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     component: DashboardComponent
   }
 ];
 
 @NgModule({
   declarations: [DashboardComponent],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, RouterModule.forChild(routes), TodoInputModule],
   exports: [DashboardComponent]
 })
 export class DashboardModule {}
