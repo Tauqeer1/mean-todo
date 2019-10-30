@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import middlewareConfig from './configs/middleware';
 import dbConnect from './configs/db';
 
@@ -13,6 +14,15 @@ const app = express();
 
 // middleware
 middlewareConfig(app);
+
+// create link to Angular build directory
+let distDir = path.resolve(__dirname, '../dist/demo-mean');
+app.use(express.static(distDir));
+
+// render index.html page from angular
+app.get('/*', (req, res) => {
+  res.sendFile(distDir + '/index.html');
+});
 
 // start a server on port 8000
 try {
