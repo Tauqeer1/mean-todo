@@ -1,10 +1,14 @@
 import express from 'express';
+import middlewareConfig from './configs/middleware';
 
 // Running server port
 const PORT = process.env.PORT || 8080;
 
 // initiate express
 const app = express();
+
+// middleware
+middlewareConfig(app);
 
 // start a server on port 8000
 try {
