@@ -13,8 +13,6 @@ Todo.collection.drop();
 User.create({ email: 'test@user.com', password: '123123123' })
   .then(user => {
     if (user) {
-      console.log('user', user);
-      console.log('id', user._id);
       Todo.create([
         {
           text: 'Todo 1',

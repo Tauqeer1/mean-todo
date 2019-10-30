@@ -9,5 +9,4 @@ require('@babel/register')({
 require('@babel/polyfill');
 
 // Import the rest of our application.
-console.log('working');
 module.exports = require('./seed/index');
