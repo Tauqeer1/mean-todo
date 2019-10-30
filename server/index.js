@@ -2,6 +2,8 @@ import express from 'express';
 import path from 'path';
 import middlewareConfig from './configs/middleware';
 import dbConnect from './configs/db';
+// import userRoutes for api routes
+import { userRoutes } from './modules';
 
 // Running server port
 const PORT = process.env.PORT || 8080;
@@ -18,6 +20,9 @@ middlewareConfig(app);
 // create link to Angular build directory
 let distDir = path.resolve(__dirname, '../dist/demo-mean');
 app.use(express.static(distDir));
+
+// Api routes for all api
+app.use('/api', [userRoutes]);
 
 // render index.html page from angular
 app.get('/*', (req, res) => {
