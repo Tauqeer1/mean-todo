@@ -16,7 +16,12 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private toastrService: ToastrService
-  ) {}
+  ) {
+    // if already logged in navigate to dashboard
+    if (this.authService.userValue) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
 
   ngOnInit() {}
 

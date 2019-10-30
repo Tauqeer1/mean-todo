@@ -15,7 +15,12 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private toastrService: ToastrService,
     private authService: AuthService
-  ) {}
+  ) {
+    // if already logged in navigate to dashboard
+    if (this.authService.userValue) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
 
   ngOnInit() {}
 
