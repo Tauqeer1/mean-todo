@@ -18,7 +18,29 @@ export class DashboardComponent implements OnInit {
     private todoService: TodoService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getAllTodos();
+  }
+
+  getAllTodos() {
+    this.todoService.getAllTodos().subscribe(
+      todos => {
+        this.todos = todos;
+      },
+      errorObj => {
+        if (
+          errorObj &&
+          errorObj.error &&
+          errorObj.error.error &&
+          errorObj.error.error.msg
+        ) {
+          this.toastrService.error(errorObj.error.error.msg, 'Error!');
+        } else {
+          this.toastrService.error('Something went wrong!');
+        }
+      }
+    );
+  }
 
   addTodo(todoObj: TodoItem) {
     this.todoService.addTodo(todoObj).subscribe(
