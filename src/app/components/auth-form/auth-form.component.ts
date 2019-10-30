@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { User } from '../../models/user';
+
 @Component({
   selector: 'app-auth-form',
   templateUrl: './auth-form.component.html',
@@ -9,6 +11,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AuthFormComponent implements OnInit {
   authForm: FormGroup;
   submitted = false;
+  @Output() formSubmitted: EventEmitter<Partial<User>> = new EventEmitter<
+    Partial<User>
+  >();
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
@@ -35,7 +40,6 @@ export class AuthFormComponent implements OnInit {
       return;
     }
     const { email, password } = this.authForm.value;
-    console.log('email', email);
-    console.log('password', password);
+    this.formSubmitted.emit({ email, password });
   }
 }

@@ -18,7 +18,7 @@ const app = express();
 middlewareConfig(app);
 
 // create link to Angular build directory
-let distDir = path.resolve(__dirname, '../dist/demo-mean');
+let distDir = path.resolve(__dirname, '../dist/mean-todo');
 app.use(express.static(distDir));
 
 // Api routes for all api

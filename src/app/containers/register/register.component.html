@@ -1,5 +1,5 @@
 <!-- Content projection of auth form -->
-<app-auth-form>
+<app-auth-form (formSubmitted)="register($event)">
   <h1 class="row justify-content-center align-items-center h-100">
     Register
   </h1>
