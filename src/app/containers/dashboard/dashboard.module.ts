@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './../../helper/auth-guard/auth-guard.guard';
 
+import { HeaderModule } from '../../components/header/header.module';
 import { TodoInputModule } from '../../components/todo-input/todo-input.module';
 import { TodoListModule } from './../../components/todo-list/todo-list.module';
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    HeaderModule,
     TodoInputModule,
     TodoListModule
   ],

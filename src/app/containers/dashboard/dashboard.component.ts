@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ToastrService } from 'ngx-toastr';
 
+import { AuthService } from '../../services/auth/auth.service';
 import { TodoService } from '../../services/todo/todo.service';
 
 import { TodoItem } from '../../models/todo';
@@ -15,6 +16,7 @@ export class DashboardComponent implements OnInit {
   todos: Array<Partial<TodoItem>>;
   constructor(
     private toastrService: ToastrService,
+    private authService: AuthService,
     private todoService: TodoService
   ) {}
 
@@ -114,5 +116,9 @@ export class DashboardComponent implements OnInit {
         }
       }
     );
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }
